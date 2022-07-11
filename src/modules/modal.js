@@ -4,8 +4,6 @@ const modal = () => {
   const headerBtn = document.getElementById("header-btn");
   const modal = document.querySelector(".header-modal");
   const overlay = document.querySelector(".overlay");
-  const modalCloseBtn = modal.querySelector(".header-modal__close");
-  console.log(headerBtn);
 
   //вызов модульного окна при нажатии на кнопку
 
