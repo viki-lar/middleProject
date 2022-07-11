@@ -4,4 +4,4 @@ import calc from "./modules/calc";
 
 modal();
 timer("15 july 2022");
-calc();
+calc(1000);
