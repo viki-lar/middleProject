@@ -1,5 +1,3 @@
-import one from "./modules/two";
-import two from "./modules/one";
+import modal from "./modules/modal";
 
-one();
-two();
+modal();
