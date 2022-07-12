@@ -10,6 +10,6 @@ modal(
   ".overlay",
   "services-modal__close"
 );
-timer("15 july 2022");
+timer("17 july 2022");
 slider();
 calc(1000);
