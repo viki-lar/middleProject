@@ -4,30 +4,42 @@ const slider = () => {
   const sliderBlock = document.querySelector(".slider");
   const slides = document.querySelectorAll(".service-block");
 
-  const timeInterval = 4000;
+  const timeInterval = 3000;
   let currentSlide = 0;
+  let count;
   let interval;
 
   //переключение на следующий слайд
   const prevSlide = (elems, index) => {
-    elems[index].style.display = "none";
-    elems[index + 1].style.display = "none";
+    if (screen.width >= 576) {
+      elems[index].style.display = "none";
+      elems[index + 1].style.display = "none";
+    } else {
+      elems[index].style.display = "none";
+    }
   };
   //переключение на предыдущий слайд
   const nextSlide = (elems, index) => {
-    elems[index].style.display = "block";
-    elems[index + 1].style.display = "block";
+    if (screen.width >= 576) {
+      elems[index].style.display = "block";
+      elems[index + 1].style.display = "block";
+    } else {
+      elems[index].style.display = "block";
+    }
   };
 
-  // автоматическое переключение слайдов и пагинации
+  // автоматическое переключение слайдов
   const autoSlide = () => {
     prevSlide(slides, currentSlide);
-
-    currentSlide += +2;
+    if (screen.width >= 576) {
+      currentSlide += +2;
+    } else {
+      currentSlide++;
+    }
     if (currentSlide >= slides.length) {
       currentSlide = 0;
     }
-    nextSlide(slides, currentSlide, "active");
+    nextSlide(slides, currentSlide);
   };
 
   //запуск автоматического переключения
@@ -48,9 +60,17 @@ const slider = () => {
     prevSlide(slides, currentSlide);
 
     if (e.target.closest(".services__arrow--right")) {
-      currentSlide += +2;
+      if (screen.width >= 576) {
+        currentSlide += +2;
+      } else {
+        currentSlide++;
+      }
     } else if (e.target.closest(".services__arrow--left")) {
-      currentSlide -= -2;
+      if (screen.width >= 576) {
+        currentSlide -= -2;
+      } else {
+        currentSlide--;
+      }
     }
 
     //проверка счетчика и длины массива со слайдами
@@ -58,11 +78,34 @@ const slider = () => {
       currentSlide = 0;
     }
     if (currentSlide < 0) {
-      currentSlide = 0;
+      currentSlide = slides.length - 1;
     }
 
     nextSlide(slides, currentSlide);
   });
+
+  //остановка слайдера при наведении на кнопки
+  sliderBlock.addEventListener(
+    "mouseenter",
+    (e) => {
+      if (e.target.matches(".services__arrow")) {
+        stopSlide();
+      }
+    },
+    true
+  );
+
+  //запуск слайдера после наведения на кнопки
+
+  sliderBlock.addEventListener(
+    "mouseleave",
+    (e) => {
+      if (e.target.matches(".services__arrow")) {
+        startSlide(timeInterval);
+      }
+    },
+    true
+  );
 
   startSlide(timeInterval);
 };
