@@ -2,14 +2,19 @@
 
 import { animate } from "./helpers";
 
-const modal = () => {
-  const headerBtn = document.querySelectorAll(".header-btn");
-  const modal = document.querySelector(".header-modal");
-  const overlay = document.querySelector(".overlay");
+const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
+  const headerBtn = document.querySelectorAll(btnClass);
+  const modal = document.querySelector(modalClass);
+  const overlay = document.querySelector(overlayClass);
 
-  //вызов модульного окна при нажатии на кнопку
+  //вызов модального окна при нажатии на кнопку
   headerBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
+      let pagePos = window.scrollY;
+      console.log(pagePos);
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${pagePos}px`;
+
       // проверка экрана устройства
       if (screen.width <= 768) {
         modal.style.display = "block";
@@ -19,7 +24,7 @@ const modal = () => {
         modal.style.display = "block";
         overlay.style.display = "block";
         animate({
-          duration: 1000,
+          duration: 500,
           timing(timeFraction) {
             return Math.pow(timeFraction, 2);
           },
@@ -35,9 +40,13 @@ const modal = () => {
   //закрытие модального окна по клику мимо и при нажатии на кнопку закрыть
 
   modal.addEventListener("click", (e) => {
-    if (e.target.classList.contains("header-modal__close")) {
+    if (e.target.classList.contains(modalCloseClass)) {
       modal.style.display = "none";
       overlay.style.display = "none";
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
   });
 
@@ -45,6 +54,9 @@ const modal = () => {
     if (e.target.classList.contains("overlay")) {
       modal.style.display = "none";
       overlay.style.display = "none";
+
+      document.body.style.position = "";
+      document.body.style.top = "";
     }
   });
 };
