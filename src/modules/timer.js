@@ -140,7 +140,6 @@ const timer = (deadline) => {
       timerSeconds.textContent = "00";
       clearTimeout(idInterval);
     }
-    console.log("руддщ");
   };
   updateClock();
 };

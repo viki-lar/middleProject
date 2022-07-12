@@ -2,6 +2,7 @@ import modal from "./modules/modal";
 import timer from "./modules/timer";
 import calc from "./modules/calc";
 import slider from "./modules/slider";
+import scroll from "./modules/scroll";
 
 modal(".header-btn", ".header-modal", ".overlay", "header-modal__close");
 modal(
@@ -13,3 +14,4 @@ modal(
 timer("17 july 2022");
 slider();
 calc(1000);
+scroll(1000);
