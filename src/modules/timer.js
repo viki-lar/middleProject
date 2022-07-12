@@ -1,3 +1,5 @@
+"use strict";
+
 const timer = (deadline) => {
   //получение элементов со страницы
   const timerDays = document.querySelector("#timer-days");
