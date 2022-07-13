@@ -42,9 +42,8 @@ const sendForm = ({ formId, someElem = [] }) => {
     // // // добавление данных в объект
 
     someElem.forEach((elem) => {
-      console.log(elem);
       const element = document.getElementById(elem.id);
-      console.log(element);
+
       if (elem.type === "block") {
         formBody[elem.id] = element.textContent;
       } else if (elem.type === "input") {

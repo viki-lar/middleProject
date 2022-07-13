@@ -7,13 +7,23 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   const modal = document.querySelector(modalClass);
   const overlay = document.querySelector(overlayClass);
 
+  const scroll = document.querySelector(".smooth-scroll");
+
+  let scrollWidth = scroll.offsetWidth - scroll.clientWidth;
+
+  const fix = () => {
+    document.body.style.position = "fixed";
+    let pagePos = window.scrollY;
+    document.body.style.top = `-${pagePos}px`;
+    document.body.style.overflowY = " hidden";
+    document.body.style.paddingRight = scrollWidth;
+  };
+
   //вызов модального окна при нажатии на кнопку
   headerBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      let pagePos = window.scrollY;
-
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${pagePos}px`;
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      fix();
 
       // проверка экрана устройства
       if (screen.width <= 768) {
@@ -21,6 +31,7 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
         overlay.style.display = "block";
       } else {
         // анимация
+
         modal.style.display = "block";
         overlay.style.display = "block";
         animate({
@@ -39,24 +50,24 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
 
   //закрытие модального окна по клику мимо и при нажатии на кнопку закрыть
 
+  const close = (modal, overlay) => {
+    modal.style.display = "none";
+    overlay.style.display = "none";
+    document.body.style.position = "static";
+    document.body.style.overflowY = "";
+    let pagePos = window.scrollY;
+    document.body.style.top = `-${pagePos}px`;
+  };
+
   modal.addEventListener("click", (e) => {
     if (e.target.classList.contains(modalCloseClass)) {
-      modal.style.display = "none";
-      overlay.style.display = "none";
-      const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      close(modal, overlay);
     }
   });
 
   overlay.addEventListener("click", (e) => {
     if (e.target.classList.contains("overlay")) {
-      modal.style.display = "none";
-      overlay.style.display = "none";
-
-      document.body.style.position = "";
-      document.body.style.top = "";
+      close(modal, overlay);
     }
   });
 };
