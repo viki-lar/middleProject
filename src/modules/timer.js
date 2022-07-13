@@ -82,11 +82,11 @@ const timer = (deadline) => {
       });
     } else if (getTime.hours % 10 <= 4 && getTime.hours != 0) {
       nameHours.forEach((item) => {
-        item.textContent = "Часа";
+        item.textContent = "Часов";
       });
     } else {
       nameHours.forEach((item) => {
-        item.textContent = "Часов";
+        item.textContent = "Часа";
       });
     }
 

@@ -11,7 +11,7 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   headerBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
       let pagePos = window.scrollY;
-      console.log(pagePos);
+
       document.body.style.position = "fixed";
       document.body.style.top = `-${pagePos}px`;
 
