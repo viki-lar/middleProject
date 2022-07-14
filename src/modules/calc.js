@@ -24,12 +24,10 @@ const calc = (price) => {
       if (calcTypeMaterial.value > 0) {
         calcTypeMaterialValue =
           +calcTypeMaterial.options[calcTypeMaterial.selectedIndex].value;
-      } else {
-        calcTypeMaterialValue = 1;
       }
 
       // рассчет при обязательных полях
-      if (calcTypeValue && calcSquareValue) {
+      if (calcTypeValue && calcSquareValue && calcTypeMaterial) {
         totalValue =
           price * calcSquareValue * calcTypeValue * calcTypeMaterialValue;
 
@@ -47,7 +45,7 @@ const calc = (price) => {
           },
         });
       } else {
-        totalValue = 0;
+        totalValue = "";
       }
 
       //вывод итога
@@ -55,7 +53,7 @@ const calc = (price) => {
     };
 
     //запуск калькулятора
-    calcBlock.addEventListener("input", (e) => {
+    calcBlock.addEventListener("change", (e) => {
       if (
         e.target === calcType ||
         e.target === calcSquare ||
