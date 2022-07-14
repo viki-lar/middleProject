@@ -2,12 +2,8 @@ import Swiper, { Autoplay } from "swiper";
 
 Swiper.use([Autoplay]);
 
-let nx = document.getElementsByClassName("swiper-next")[0];
-let pr = document.getElementsByClassName("benefits__arrow--left")[0];
-console.log(nx);
-console.log(pr);
 const swiper = () => {
-  const swiper1 = new Swiper(".swiper", {
+  const swiper = new Swiper(".swiper", {
     // Optional parameters
     slidesPerView: 1,
     spaceBetween: 30,
@@ -20,7 +16,7 @@ const swiper = () => {
     },
 
     navigation: {
-      nextEl: ".benefits__arrow--left",
+      nextEl: ".benefits__arrow--right",
       prevEl: ".benefits__arrow--right",
     },
     breakpoints: {
