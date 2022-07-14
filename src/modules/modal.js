@@ -7,17 +7,26 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   const modal = document.querySelector(modalClass);
   const overlay = document.querySelector(overlayClass);
 
-  const scroll = document.querySelector(".smooth-scroll");
+  // создание элемента
+  const calcWidth = () => {
+    let div = document.createElement("div");
+    div.style.overflowY = "scroll";
+    div.style.width = "50px";
+    div.style.height = "50px";
 
-  let scrollWidth = scroll.offsetWidth - scroll.clientWidth;
-  let pagePos;
+    // мы должны вставить элемент в документ, иначе размеры будут равны 0
+    document.body.append(div);
+
+    // рассчет ширины скролла
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+
+    div.remove();
+    return scrollWidth;
+  };
+
   const fix = () => {
-    pagePos = window.scrollY;
-    document.body.style.top = `-${pagePos}px`;
-    overlay.style.position = "fixed";
-    document.body.style.position = "fixed";
     document.body.style.overflowY = " hidden";
-    document.body.style.paddingRight = scrollWidth;
+    document.body.style.paddingRight = calcWidth() + "px";
   };
 
   //вызов модального окна при нажатии на кнопку
@@ -51,23 +60,22 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
 
   //закрытие модального окна по клику мимо и при нажатии на кнопку закрыть
 
-  const close = (modal, overlay) => {
+  const close = () => {
     modal.style.display = "none";
     overlay.style.display = "none";
-    document.body.style.position = "static";
-    document.body.style.overflowY = "";
-    document.documentElement.scrollTop = pagePos;
+    document.body.style.overflowY = "scroll";
+    document.body.style.paddingRight = "0px";
   };
 
   modal.addEventListener("click", (e) => {
     if (e.target.classList.contains(modalCloseClass)) {
-      close(modal, overlay);
+      close();
     }
   });
 
   overlay.addEventListener("click", (e) => {
     if (e.target.classList.contains("overlay")) {
-      close(modal, overlay);
+      close();
     }
   });
 };

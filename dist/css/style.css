@@ -1598,7 +1598,7 @@ input.error {
 
 .benefits__item {
   width: 100%;
-  max-width: 185px;
+  /* max-width: 185px; */
 }
 
 .benefits-arrows {
@@ -1669,7 +1669,7 @@ input.error {
   .benefits-wrap {
     width: 100%;
     max-width: 576px;
-    overflow: hidden;
+    
   }
 }
 
