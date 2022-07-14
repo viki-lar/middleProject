@@ -12,6 +12,9 @@ const sendForm = ({ formId, someElem = [] }) => {
     formElements.forEach((input) => {
       if (!input.value) {
         success = false;
+        input.style.border = "2px solid red";
+      } else {
+        input.style.border = "";
       }
     });
     return success;
@@ -43,11 +46,13 @@ const sendForm = ({ formId, someElem = [] }) => {
 
     someElem.forEach((elem) => {
       const element = document.getElementById(elem.id);
-
-      if (elem.type === "block") {
-        formBody[elem.id] = element.textContent;
-      } else if (elem.type === "input") {
-        formBody[elem.id] = element.value;
+      // если элемент существует, то добавится в форму
+      if (element) {
+        if (elem.type === "block") {
+          formBody[elem.id] = element.textContent;
+        } else if (elem.type === "input") {
+          formBody[elem.id] = element.value;
+        }
       }
     });
 
