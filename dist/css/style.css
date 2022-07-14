@@ -1669,6 +1669,7 @@ input.error {
   .benefits-wrap {
     width: 100%;
     max-width: 576px;
+    overflow: hidden;
   }
 }
 

@@ -5,6 +5,7 @@ import slider from "./modules/slider";
 import scroll from "./modules/scroll";
 import validate from "./modules/validate";
 import sendForm from "./modules/sendForm";
+import swiper from "./modules/swiper";
 
 modal(".header-btn", ".header-modal", ".overlay", "header-modal__close");
 modal(
@@ -19,7 +20,7 @@ slider();
 calc(1000);
 scroll(1000);
 validate();
-
+swiper();
 sendForm({
   formId: "form1",
   someElem: [
