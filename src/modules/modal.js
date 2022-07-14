@@ -12,9 +12,10 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   let scrollWidth = scroll.offsetWidth - scroll.clientWidth;
 
   const fix = () => {
-    document.body.style.position = "fixed";
     let pagePos = window.scrollY;
     document.body.style.top = `-${pagePos}px`;
+    overlay.style.position = "fixed";
+    document.body.style.position = "fixed";
     document.body.style.overflowY = " hidden";
     document.body.style.paddingRight = scrollWidth;
   };
@@ -51,11 +52,12 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   //закрытие модального окна по клику мимо и при нажатии на кнопку закрыть
 
   const close = (modal, overlay) => {
+    let pagePos = window.scrollY;
     modal.style.display = "none";
     overlay.style.display = "none";
     document.body.style.position = "static";
     document.body.style.overflowY = "";
-    let pagePos = window.scrollY;
+
     document.body.style.top = `-${pagePos}px`;
   };
 
