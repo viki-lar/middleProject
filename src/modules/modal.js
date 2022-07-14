@@ -10,9 +10,9 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   const scroll = document.querySelector(".smooth-scroll");
 
   let scrollWidth = scroll.offsetWidth - scroll.clientWidth;
-
+  let pagePos;
   const fix = () => {
-    let pagePos = window.scrollY;
+    pagePos = window.scrollY;
     document.body.style.top = `-${pagePos}px`;
     overlay.style.position = "fixed";
     document.body.style.position = "fixed";
@@ -52,13 +52,11 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
   //закрытие модального окна по клику мимо и при нажатии на кнопку закрыть
 
   const close = (modal, overlay) => {
-    let pagePos = window.scrollY;
     modal.style.display = "none";
     overlay.style.display = "none";
     document.body.style.position = "static";
     document.body.style.overflowY = "";
-
-    document.body.style.top = `-${pagePos}px`;
+    document.documentElement.scrollTop = pagePos;
   };
 
   modal.addEventListener("click", (e) => {

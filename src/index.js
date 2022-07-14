@@ -19,6 +19,7 @@ slider();
 calc(1000);
 scroll(1000);
 validate();
+
 sendForm({
   formId: "form1",
   someElem: [
