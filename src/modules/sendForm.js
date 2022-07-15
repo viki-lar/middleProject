@@ -9,13 +9,27 @@ const sendForm = ({ formId, someElem = [] }) => {
   const validateForm = (list) => {
     let success = true;
     const formElements = form.querySelectorAll("input");
+
     formElements.forEach((input) => {
+      // отключение стиля ошибки при фокуссировке
+      // input.addEventListener("focus", () => {
+      //   input.style.border = "";
+      // });
+      // подключение стиля при ошибке
       if (!input.value) {
         success = false;
         input.style.border = "2px solid red";
       } else {
         input.style.border = "";
       }
+
+      // отключение стиля ошибки при фокуссировке
+      input.addEventListener("focus", () => {
+        const formElements = form.querySelectorAll("input");
+        formElements.forEach((input) => {
+          input.style.border = "";
+        });
+      });
     });
     return success;
   };
