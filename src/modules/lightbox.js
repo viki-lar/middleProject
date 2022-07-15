@@ -1,3 +1,5 @@
+import { modal } from "./modal";
+
 const lightbox = () => {
   const body = document.querySelector("body");
   const sertificate = document.querySelectorAll(".sertificate-document");
@@ -23,44 +25,12 @@ const lightbox = () => {
     imageModal.append(close);
 
     image.style.cssText = "overflow: hidden;  height: 80vh;";
-    image.src = "images/documents/document4.jpg";
+    image.src = "images/documents/original/document4.jpg";
     imageModal.append(image);
   };
 
   createBlock();
 
-  // открытие
-  const open = () => {
-    const imageModal = document.querySelector(".imageModal");
-    imageModal.style.display = "block";
-    overlay.style.display = "block";
-  };
-
-  //закрытие
-  const close = () => {
-    const imageModal = document.querySelector(".imageModal");
-    imageModal.style.display = "none";
-    overlay.style.display = "none";
-  };
-
-  // открытие при клике на изображение
-  sertificate.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.preventDefault();
-      open();
-
-      //закрытие при клике на кнопку
-      const closeBtn = document.querySelector(".close");
-      closeBtn.addEventListener("click", () => {
-        close();
-      });
-
-      overlay.addEventListener("click", (e) => {
-        if (e.target.classList.contains("overlay")) {
-          close();
-        }
-      });
-    });
-  });
+  modal(".sertificate-document", ".imageModal", ".overlay", "close");
 };
 export default lightbox;

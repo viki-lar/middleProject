@@ -81,3 +81,4 @@ const modal = (btnClass, modalClass, overlayClass, modalCloseClass) => {
 };
 
 export default modal;
+export { modal };
