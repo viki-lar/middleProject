@@ -1,6 +1,6 @@
-import Swiper, { Autoplay } from "swiper";
+import Swiper, { Autoplay, Navigation } from "swiper";
 
-Swiper.use([Autoplay]);
+Swiper.use([Autoplay, Navigation]);
 
 const swiper = () => {
   const swiper = new Swiper(".swiper", {
@@ -17,7 +17,7 @@ const swiper = () => {
 
     navigation: {
       nextEl: ".benefits__arrow--right",
-      prevEl: ".benefits__arrow--right",
+      prevEl: ".benefits__arrow--left",
     },
     breakpoints: {
       320: {

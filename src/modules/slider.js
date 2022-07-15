@@ -10,6 +10,13 @@ const slider = () => {
     let count;
     let interval;
 
+    slides.forEach(slide, () => {
+      if (screen.width >= 576) {
+        elems[index].style.display = "none";
+        elems[index + 1].style.display = "none";
+      }
+    });
+
     //переключение на следующий слайд
     const prevSlide = (elems, index) => {
       if (screen.width >= 576) {
