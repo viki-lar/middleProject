@@ -11,11 +11,6 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formElements = form.querySelectorAll("input");
 
     formElements.forEach((input) => {
-      // отключение стиля ошибки при фокуссировке
-      // input.addEventListener("focus", () => {
-      //   input.style.border = "";
-      // });
-      // подключение стиля при ошибке
       if (!input.value) {
         success = false;
         input.style.border = "2px solid red";
