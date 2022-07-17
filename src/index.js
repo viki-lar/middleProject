@@ -38,16 +38,16 @@ sendForm({
   formId: "form2",
   someElem: [
     {
-      type: "block",
+      type: "input",
       id: "calc-total",
     },
   ],
 });
 sendForm({
-  formId: "form3",
+  formId: "input",
   someElem: [
     {
-      type: "block",
+      type: "input",
       id: "calc-total",
     },
   ],
@@ -56,7 +56,7 @@ sendForm({
   formId: "form4",
   someElem: [
     {
-      type: "block",
+      type: "input",
       id: "calc-total",
     },
   ],
@@ -65,7 +65,7 @@ sendForm({
   formId: "form5",
   someElem: [
     {
-      type: "block",
+      type: "input",
       id: "calc-total",
     },
   ],
@@ -74,7 +74,7 @@ sendForm({
   formId: "form6",
   someElem: [
     {
-      type: "block",
+      type: "input",
       id: "calc-total",
     },
   ],
@@ -83,7 +83,7 @@ sendForm({
   formId: "form7",
   someElem: [
     {
-      // type: "block",
+      type: "input",
       id: "calc-total",
     },
   ],
