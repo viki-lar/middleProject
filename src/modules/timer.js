@@ -118,6 +118,7 @@ const timer = (deadline) => {
     } else if (
       getTime.seconds % 10 <= 4 &&
       getTime.seconds % 10 != 0 &&
+      getTime.seconds != 11 &&
       getTime.seconds != 12 &&
       getTime.seconds != 13 &&
       getTime.seconds != 14
